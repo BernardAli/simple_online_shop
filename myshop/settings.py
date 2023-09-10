@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'payment.apps.PaymentConfig',
+    'coupons.apps.CouponsConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -148,3 +149,7 @@ STRIPE_PUBLISHABLE_KEY = 'pk_test_51NoPygIsYmyJ5zIYOJV9wV4SZoIrFAbPie6MwqX1ItFrl
 STRIPE_SECRET_KEY = 'sk_test_51NoPygIsYmyJ5zIYVcXCKYFdKdmtCT1aYNe4CeSmQVA9vs0OUTxTpzlLThoIwltlAP6uoVU1Ik7VI9qRWplkEALC00JSxdGmYa' # Secret key
 STRIPE_API_VERSION = '2022-08-01'
 STRIPE_WEBHOOK_SECRET = 'whsec_ea09782968ab615fda2bcddd61c1cd46115a33cf4b16210a5bd29fe4a4ab9331'
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 1
