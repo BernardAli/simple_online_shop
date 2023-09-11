@@ -1,4 +1,5 @@
 from django import forms
+from localflavor.us.forms import USZipCodeField
 from .models import Order
 
 
