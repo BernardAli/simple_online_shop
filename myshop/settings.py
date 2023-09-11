@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -26,7 +26,6 @@ SECRET_KEY = 'django-insecure-#23x9^kz&3+bdxw&h$6zii8#c!%l7!ls@8qyfazh978d#5+i+i
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -43,11 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rosetta',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -76,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myshop.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -86,7 +87,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -106,18 +106,25 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('es', _('Spanish')),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -145,8 +152,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 # Stripe settings
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51NoPygIsYmyJ5zIYOJV9wV4SZoIrFAbPie6MwqX1ItFrlaC2SAIdc5cxaqrv15CDIWIY644HWfekulYu4RywRwNW002PEieGzB' # Publishable key
-STRIPE_SECRET_KEY = 'sk_test_51NoPygIsYmyJ5zIYVcXCKYFdKdmtCT1aYNe4CeSmQVA9vs0OUTxTpzlLThoIwltlAP6uoVU1Ik7VI9qRWplkEALC00JSxdGmYa' # Secret key
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51NoPygIsYmyJ5zIYOJV9wV4SZoIrFAbPie6MwqX1ItFrlaC2SAIdc5cxaqrv15CDIWIY644HWfekulYu4RywRwNW002PEieGzB'  # Publishable key
+STRIPE_SECRET_KEY = 'sk_test_51NoPygIsYmyJ5zIYVcXCKYFdKdmtCT1aYNe4CeSmQVA9vs0OUTxTpzlLThoIwltlAP6uoVU1Ik7VI9qRWplkEALC00JSxdGmYa'  # Secret key
 STRIPE_API_VERSION = '2022-08-01'
 STRIPE_WEBHOOK_SECRET = 'whsec_ea09782968ab615fda2bcddd61c1cd46115a33cf4b16210a5bd29fe4a4ab9331'
 
