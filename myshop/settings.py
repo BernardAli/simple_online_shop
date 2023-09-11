@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rosetta',
+    'parler',
 ]
 
 MIDDLEWARE = [
@@ -157,6 +158,19 @@ STRIPE_SECRET_KEY = 'sk_test_51NoPygIsYmyJ5zIYVcXCKYFdKdmtCT1aYNe4CeSmQVA9vs0OUT
 STRIPE_API_VERSION = '2022-08-01'
 STRIPE_WEBHOOK_SECRET = 'whsec_ea09782968ab615fda2bcddd61c1cd46115a33cf4b16210a5bd29fe4a4ab9331'
 
+# Redis settings
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 1
+
+# django-parler settings
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'es'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
